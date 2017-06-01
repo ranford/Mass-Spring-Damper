@@ -3,6 +3,7 @@ import matlab.unittest.plugins.TAPPlugin;
 import matlab.unittest.plugins.TestReportPlugin;
 import matlab.unittest.plugins.CodeCoveragePlugin;
 import matlab.unittest.plugins.ToFile;
+import matlab.unittest.plugins.codecoverage.CoberturaFormat
 
 
 try
@@ -33,7 +34,8 @@ try
     
     % Add the CodeCoveragePlugin
     srcFolder = fullfile(ws, 'source');
-    runner.addPlugin(CodeCoveragePlugin.forFolder(srcFolder));
+    coverageFile = fullfile(ws, 'coverage.xml')
+    runner.addPlugin(CodeCoveragePlugin.forFolder(srcFolder,'Producing', CoberturaFormat(coverageFile)));
     
     
     results = runner.run(suite)
