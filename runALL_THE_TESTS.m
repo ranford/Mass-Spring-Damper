@@ -29,7 +29,8 @@ try
     
     % html
     htmlFolder = fullfile(ws, 'testresults');
-    runner.addPlugin(TestReportPlugin.producingHTML(htmlFolder,'IncludingCommandWindowText', true));
+    runner.addPlugin(TestReportPlugin.producingHTML(htmlFolder,'IncludingCommandWindowText', true, ...
+                                                    'IncludingPassingDiagnostics', true));
     
     
     % Add the CodeCoveragePlugin
@@ -43,4 +44,4 @@ catch e
     disp(getReport(e,'extended'));
     exit(1);
 end
-exit; 
+exit;
