@@ -17,8 +17,10 @@ try
 
     % Create and configure the runner
     runner = TestRunner.withTextOutput('Verbosity',3);
-    
-    % Add the TAP plugin   
+    runner.ArtifactLocation = fullfile(ws,'artifacts');
+
+
+    % Add the TAP plugin
     tapFile = fullfile(ws, 'testResults.tap');
     runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
     
