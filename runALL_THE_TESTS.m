@@ -43,4 +43,4 @@ catch e
     disp(getReport(e,'extended'));
     exit(1);
 end
-exit;
+exit; 
