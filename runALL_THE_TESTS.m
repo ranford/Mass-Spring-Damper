@@ -1,10 +1,10 @@
 try
-    import matlab.unittest.TestRunner;
-    import matlab.unittest.plugins.TAPPlugin;
-    import matlab.unittest.plugins.TestReportPlugin;
-    import matlab.unittest.plugins.CodeCoveragePlugin;
-    import matlab.unittest.plugins.ToFile;
-    import matlab.unittest.plugins.codecoverage.CoberturaFormat
+    import('matlab.unittest.TestRunner');
+    import('matlab.unittest.plugins.TAPPlugin');
+    import('matlab.unittest.plugins.TestReportPlugin');
+    import('matlab.unittest.plugins.CodeCoveragePlugin');
+    import('matlab.unittest.plugins.ToFile');
+    import('matlab.unittest.plugins.codecoverage.CoberturaFormat');
     ws = getenv('WORKSPACE');
     
     src = fullfile(ws, 'source');
