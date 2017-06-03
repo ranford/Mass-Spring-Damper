@@ -5,6 +5,7 @@ try
     import('matlab.unittest.plugins.CodeCoveragePlugin');
     import('matlab.unittest.plugins.ToFile');
     import('matlab.unittest.plugins.codecoverage.CoberturaFormat');
+    
     ws = getenv('WORKSPACE');
     
     src = fullfile(ws, 'source');
@@ -15,7 +16,10 @@ try
 
     % Create and configure the runner
     runner = TestRunner.withTextOutput('Verbosity',3);
-    %runner.ArtifactLocation = fullfile(ws,'artifacts');
+    artifactsFolder = fullfile(ws,'artifacts');
+    mkdir(artifactsFolder);
+    runner.ArtifactsRootFolder = artifactsFolder;
+    
 
 
     % Add the TAP plugin
