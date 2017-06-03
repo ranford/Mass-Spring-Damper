@@ -37,6 +37,7 @@ end
 
 function fig = plotResponse(varargin)
 fig = figure('Visible','off');
+fig.CreateFcn = @(o,e) set(o,'Visible','on');
 ax = axes('Parent',fig);
 plot(ax, varargin{:},'LineWidth',3);
 title('Response')
