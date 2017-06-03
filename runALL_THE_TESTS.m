@@ -19,8 +19,10 @@ try
 
 
     % Add the TAP plugin
-    tapFile = fullfile(ws, 'testResults.tap');
+    tapFile = fullfile(ws, 'testResults13.tap');
+    tapFile = fullfile(ws, 'testResultsOriginal.tap');
     runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
+    runner.addPlugin(TAPPlugin.producingOriginalFormat(ToFile(tapFile)));
     
     % Add the TestReportPlugin
     % pdf
@@ -29,14 +31,15 @@ try
     
     % html
     htmlFolder = fullfile(ws, 'testresults');
-    runner.addPlugin(TestReportPlugin.producingHTML(htmlFolder,'IncludingCommandWindowText', true, ...
-                                                    'IncludingPassingDiagnostics', true));
+    runner.addPlugin(TestReportPlugin.producingHTML(htmlFolder,...
+        'IncludingCommandWindowText', true,  'IncludingPassingDiagnostics', true));
     
     
     % Add the CodeCoveragePlugin
     srcFolder = fullfile(ws, 'source');
     coverageFile = fullfile(ws, 'coverage.xml');
-    runner.addPlugin(CodeCoveragePlugin.forFolder(srcFolder,'Producing', CoberturaFormat(coverageFile)));
+    runner.addPlugin(CodeCoveragePlugin.forFolder(srcFolder,...
+        'Producing', CoberturaFormat(coverageFile)));
     
     
     results = runner.run(suite)
