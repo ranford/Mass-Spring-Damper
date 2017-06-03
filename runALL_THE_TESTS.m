@@ -1,14 +1,12 @@
-import matlab.unittest.TestRunner;
-import matlab.unittest.plugins.TAPPlugin;
-import matlab.unittest.plugins.TestReportPlugin;
-import matlab.unittest.plugins.CodeCoveragePlugin;
-import matlab.unittest.plugins.ToFile;
-import matlab.unittest.plugins.codecoverage.CoberturaFormat
-
-
 try
+    import matlab.unittest.TestRunner;
+    import matlab.unittest.plugins.TAPPlugin;
+    import matlab.unittest.plugins.TestReportPlugin;
+    import matlab.unittest.plugins.CodeCoveragePlugin;
+    import matlab.unittest.plugins.ToFile;
+    import matlab.unittest.plugins.codecoverage.CoberturaFormat
     ws = getenv('WORKSPACE');
-
+    
     src = fullfile(ws, 'source');
     addpath(src);
     
@@ -17,7 +15,7 @@ try
 
     % Create and configure the runner
     runner = TestRunner.withTextOutput('Verbosity',3);
-    runner.ArtifactLocation = fullfile(ws,'artifacts');
+    %runner.ArtifactLocation = fullfile(ws,'artifacts');
 
 
     % Add the TAP plugin
@@ -37,7 +35,7 @@ try
     
     % Add the CodeCoveragePlugin
     srcFolder = fullfile(ws, 'source');
-    coverageFile = fullfile(ws, 'coverage.xml')
+    coverageFile = fullfile(ws, 'coverage.xml');
     runner.addPlugin(CodeCoveragePlugin.forFolder(srcFolder,'Producing', CoberturaFormat(coverageFile)));
     
     
