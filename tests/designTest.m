@@ -36,7 +36,7 @@ end
 
 
 function fig = plotResponse(varargin)
-hLine = plot(varargin{:},'LineWidth',3);
+hLine = plot(varargin{:},'LineWidth',3,'Visible',false);
 title('Response')
 xlabel('Time')
 ylabel('Position')

@@ -28,7 +28,7 @@ try
     runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
    % runner.addPlugin(TAPPlugin.producingOriginalFormat(ToFile(tapFile)));
     
-   runner.addPlugin(XMLPlugin.producingJUnitFormat('testResults.xml');
+   runner.addPlugin(XMLPlugin.producingJUnitFormat('testResults.xml'));
    
    % Add the TestReportPlugin
     % pdf
