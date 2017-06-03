@@ -19,10 +19,10 @@ try
 
 
     % Add the TAP plugin
-    tapFile = fullfile(ws, 'testResults13.tap');
-    tapFile = fullfile(ws, 'testResultsOriginal.tap');
-    runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
-    runner.addPlugin(TAPPlugin.producingOriginalFormat(ToFile(tapFile)));
+    tapFile13 = fullfile(ws, 'testResults13.tap');
+    tapFileOG = fullfile(ws, 'testResultsOriginal.tap');
+    runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile13)));
+    runner.addPlugin(TAPPlugin.producingOriginalFormat(ToFile(tapFileOG)));
     
     % Add the TestReportPlugin
     % pdf
