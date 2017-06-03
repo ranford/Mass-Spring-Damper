@@ -36,10 +36,10 @@ end
 
 
 function fig = plotResponse(varargin)
-hLine = plot(varargin{:},'LineWidth',3,'Visible','off');
+fig = figure('Visible','off');
+ax = axes('Parent',fig);
+plot(ax, varargin{:},'LineWidth',3);
 title('Response')
 xlabel('Time')
 ylabel('Position')
-
-fig = ancestor(hLine,'figure');
 end
