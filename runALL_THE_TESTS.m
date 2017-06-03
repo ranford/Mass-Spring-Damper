@@ -1,6 +1,7 @@
 try
     import('matlab.unittest.TestRunner');
     import('matlab.unittest.plugins.TAPPlugin');
+    import('matlab.unittest.plugins.XMLPlugin');
     import('matlab.unittest.plugins.TestReportPlugin');
     import('matlab.unittest.plugins.CodeCoveragePlugin');
     import('matlab.unittest.plugins.ToFile');
@@ -23,12 +24,13 @@ try
 
 
     % Add the TAP plugin
-    tapFile13 = fullfile(ws, 'testResults13.tap');
-    tapFileOG = fullfile(ws, 'testResultsOriginal.tap');
-    runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile13)));
-    runner.addPlugin(TAPPlugin.producingOriginalFormat(ToFile(tapFileOG)));
+    tapFile = fullfile(ws, 'testResults.tap');
+    runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
+   % runner.addPlugin(TAPPlugin.producingOriginalFormat(ToFile(tapFile)));
     
-    % Add the TestReportPlugin
+   runner.addPlugin(XMLPlugin.producingJUnitFormat('testResults.xml');
+   
+   % Add the TestReportPlugin
     % pdf
     pdfFile = fullfile(ws, 'TestReport.pdf');
     runner.addPlugin(TestReportPlugin.producingPDF(pdfFile));
