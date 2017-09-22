@@ -1,6 +1,6 @@
 try
     import('matlab.unittest.TestRunner');
-    import('matlab.unittest.plugins.TAPPlugin');
+    import('matlab.unittest.plugins.XMLPlugin');
     import('matlab.unittest.plugins.ToFile');
 
     
@@ -18,8 +18,8 @@ try
     % Add the TAP plugin
     resultsDir = fullfile(ws, 'testresults');
     mkdir(resultsDir);
-    tapFile = fullfile(resultsDir, 'testResults.tap');
-    runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
+    resultsFile = fullfile(resultsDir, 'testResults.xml');
+    runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile)));
      
     results = runner.run(suite)
 catch e
