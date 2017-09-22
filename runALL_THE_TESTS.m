@@ -16,7 +16,9 @@ try
     runner = TestRunner.withTextOutput('Verbosity',3);
 
     % Add the TAP plugin
-    tapFile = fullfile(ws, 'testResults.tap');
+    resultsDir = fullfile(ws, 'testresults');
+    mkdir(resultsDir);
+    tapFile = fullfile(resultsDir, 'testResults.tap');
     runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
      
     results = runner.run(suite)
