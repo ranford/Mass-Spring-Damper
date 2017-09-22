@@ -7,7 +7,7 @@ function testSettlingTime(testCase)
 
 import matlab.unittest.diagnostics.FigureDiagnostic;
 
-[position, time] = simulateSystem(springMassDamperDesign); 
+[position, time] = simulateSystem; 
 
 f = plotResponse(time, position);
 testCase.addTeardown(@close, f);
@@ -23,25 +23,13 @@ function testOvershoot(testCase)
 
 import matlab.unittest.diagnostics.FigureDiagnostic;
 
-[position, time] = simulateSystem(springMassDamperDesign);
+[position, time] = simulateSystem;
 overshoot = max(position);
 
 f = plotResponse(time, position);
 testCase.addTeardown(@close, f);
 
 verifyLessThan(testCase, overshoot, 0.01, FigureDiagnostic(f));
-end
-
-function idealTest(testCase)
-
-%setup
-
-%exercise
-
-%verify
-
-%teardown
-
 end
 
 
