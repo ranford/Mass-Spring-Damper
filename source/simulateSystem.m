@@ -1,4 +1,6 @@
-function [x, t] = simulateSystem(design)
+function [x, t] = simulateSystem
+
+springMassDamperDesign; % Create design veriable.
 
 if ~isstruct(design) || ~all(isfield(design,{'c','k'}))
     error('simulateSystem:InvalidDesign:ShouldBeStruct', ...
