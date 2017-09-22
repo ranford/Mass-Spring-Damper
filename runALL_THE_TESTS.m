@@ -19,7 +19,7 @@ try
     resultsDir = fullfile(ws, 'testresults');
     mkdir(resultsDir);
     resultsFile = fullfile(resultsDir, 'testResults.xml');
-    runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile)));
+    runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile));
      
     results = runner.run(suite)
 catch e
