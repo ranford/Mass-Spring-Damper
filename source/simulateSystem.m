@@ -1,6 +1,6 @@
 function [x, t] = simulateSystem
 
-springMassDamperDesign; % Create design veriable.
+springMassDamperDesign; % Create design variable.
 
 if ~isstruct(design) || ~all(isfield(design,{'c','k'}))
     error('simulateSystem:InvalidDesign:ShouldBeStruct', ...
