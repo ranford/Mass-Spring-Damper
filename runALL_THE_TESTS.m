@@ -2,8 +2,7 @@ try
     import('matlab.unittest.TestRunner');
     import('matlab.unittest.plugins.XMLPlugin');
     import('matlab.unittest.plugins.ToFile');
-    import('matlab.unittest.plugins.CodeCoveragePlugin');
-    import('matlab.unittest.plugins.codecoverage.CoberturaFormat');
+
     
     ws = getenv('WORKSPACE');
     
@@ -22,10 +21,8 @@ try
     
     resultsFile = fullfile(resultsDir, 'testResults.xml');
     runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile));
-
-    coverageFile = fullfile(resultsDir, 'coverage.xml');
-    runner.addPlugin(CodeCoveragePlugin.forFolder(src,...
-        'Producing', CoberturaFormat(coverageFile)));
+     
+    addCoberturaCoverageIfPossible(runner, fullfile(resultsDir, 'coverage.xml'));
     
     results = runner.run(suite) 
 catch e
