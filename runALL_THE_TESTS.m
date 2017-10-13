@@ -30,6 +30,6 @@ try
     results = runner.run(suite) 
 catch e
     disp(getReport(e,'extended'));
-   % exit(1);
+    exit(1);
 end
-%quit('force');
+quit('force');
