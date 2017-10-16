@@ -1,4 +1,4 @@
-function addCoberturaCoverageIfPossible(runner, coverageFile)
+function addCoberturaCoverageIfPossible(runner, src, coverageFile)
 
 if ~verLessThan('matlab','9.3')
     import('matlab.unittest.plugins.CodeCoveragePlugin');
