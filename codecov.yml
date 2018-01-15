@@ -1,4 +1,2 @@
 codecov:
   max_report_age: false
-fixes:
-  - "/Users/Shared/Jenkins/Home/jobs/Mass-Spring-Damper/workspace/::"
