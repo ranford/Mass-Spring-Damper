@@ -3,6 +3,7 @@ try
     import('matlab.unittest.plugins.XMLPlugin');
     import('matlab.unittest.plugins.ToFile');
 
+    rehash toolboxcache;
     
     ws = getenv('WORKSPACE');
     
