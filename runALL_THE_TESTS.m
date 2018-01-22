@@ -8,9 +8,8 @@ try
     
     src = fullfile(ws, 'source');
     addpath(src);
-    
-    tests = fullfile(ws, 'tests');
-    suite = testsuite(tests);
+
+    suite = testsuite;
 
     % Create and configure the runner
     runner = TestRunner.withTextOutput('Verbosity',3);
