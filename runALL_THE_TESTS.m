@@ -3,12 +3,16 @@ try
     import('matlab.unittest.plugins.XMLPlugin');
     import('matlab.unittest.plugins.ToFile');
 
-    %rehash toolboxcache;
+    d = dir('*.prj');
+    matlab.addons.toolbox.packageToolbox(d.name);
+
+    tbx = matlab.addons.toolbox.installToolbox(d.name,true);
+    cl =onCleanup(@() matlab.addons.toolbox.installToolbox(tbx));
     
     ws = getenv('WORKSPACE');
     
     src = fullfile(ws, 'source');
-    addpath(src);
+    %addpath(src);
 
     suite = testsuite;
 
