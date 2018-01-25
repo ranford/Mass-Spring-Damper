@@ -34,7 +34,7 @@ try
     if produceTAP
         mkdirIfNeeded(resultsDir)
         tapFile = fullfile(resultsDir, 'testResults.tap');
-        fclose(fopen(tapFile));
+        fclose(fopen(tapFile,'w'));
         runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
     end
 
