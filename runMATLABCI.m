@@ -12,10 +12,11 @@ try
     
     mkdirIfNeeded(fullfile(ws,'release'));
     d = dir('*.prj');
-    outputToolbox = fullfile('release', [d.name '.mltbx']);
+    [~, shortName] = fileparts(d.name);
+    outputToolbox = fullfile('release', [shortName '.mltbx']);
     matlab.addons.toolbox.packageToolbox(d.name, outputToolbox);
     tbx = matlab.addons.toolbox.installToolbox(outputToolbox,true);
-    cl =onCleanup(@() matlab.addons.toolbox.uninstallToolbox(tbx));
+    cl = onCleanup(@() matlab.addons.toolbox.uninstallToolbox(tbx));
     
     
     suite = testsuite;
