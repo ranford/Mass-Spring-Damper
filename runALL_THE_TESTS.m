@@ -47,6 +47,6 @@ end
 exit(nnz([results.Failed]));
 
 function mkdirIfNeeded(dir)
-if exist(dir,7) ~= 7
+if exist(dir,'dir') ~= 7
     mkdir(dir);
 end
