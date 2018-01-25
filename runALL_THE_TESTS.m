@@ -24,7 +24,7 @@ try
     runner = TestRunner.withTextOutput('Verbosity',3);
 
     % Add the requested plugins
-    resultsDir = fullfile(ws, 'results');
+    resultsDir = fullfile(ws, 'testresults');
     if produceJUnit
         mkdirIfNeeded(resultsDir)
         resultsFile = fullfile(resultsDir, 'testResults.xml');
