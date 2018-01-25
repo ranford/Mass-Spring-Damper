@@ -1,4 +1,4 @@
-function runMATLABCI(produceJUnit, produceTAP, produceCobertura)
+function runMATLABCI(produceTAP, produceJUnit, produceCobertura)
 try
     import('matlab.unittest.TestRunner');
     import('matlab.unittest.plugins.XMLPlugin');
