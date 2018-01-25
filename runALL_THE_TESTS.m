@@ -27,14 +27,15 @@ try
     resultsDir = fullfile(ws, 'results');
     if produceJUnit
         mkdirIfNeeded(resultsDir)
-        resultsFile = fullfile(resultsDir, 'testResults.xml');
-        runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile));
+        xmlFile = fullfile(resultsDir, 'testResults.xml');
+        runner.addPlugin(XMLPlugin.producingJUnitFormat(xmlFile));
     end
     
     if produceTAP
         mkdirIfNeeded(resultsDir)
-        resultsFile = fullfile(resultsDir, 'testResults.tap');
-        runner.addPlugin(TAPPlugin.producingVersion13(ToFile(resultsFile)));
+        tapFile = fullfile(resultsDir, 'testResults.tap');
+        fclose(fopen(tapFile));
+        runner.addPlugin(TAPPlugin.producingVersion13(ToFile(tapFile)));
     end
 
     if produceCobertura
