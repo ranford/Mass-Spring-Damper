@@ -2,18 +2,21 @@ function runMATLABCI(produceJUnit, produceTAP, produceCobertura)
 try
     import('matlab.unittest.TestRunner');
     import('matlab.unittest.plugins.XMLPlugin');
+    import('matlab.unittest.plugins.TAPPlugin');
     import('matlab.unittest.plugins.ToFile');
     import('matlab.unittest.plugins.CodeCoveragePlugin');
     import('matlab.unittest.plugins.codecoverage.CoberturaFormat');
 
-    mkdir('release')
+    ws = getenv('WORKSPACE');
+    
+    mkdirIfNeeded(fullfile(ws,'release'));
     d = dir('*.prj');
     outputToolbox = fullfile('release', [d.name '.mltbx']);
     matlab.addons.toolbox.packageToolbox(d.name, outputToolbox);
     tbx = matlab.addons.toolbox.installToolbox(outputToolbox,true);
-    cl =onCleanup(@() matlab.addons.toolbox.installToolbox(tbx));
+    cl =onCleanup(@() matlab.addons.toolbox.uninstallToolbox(tbx));
     
-    ws = getenv('WORKSPACE');
+    
     suite = testsuite;
 
     % Create and configure the runner
