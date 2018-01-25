@@ -4,6 +4,7 @@ try
     import('matlab.unittest.plugins.XMLPlugin');
     import('matlab.unittest.plugins.TAPPlugin');
     import('matlab.unittest.plugins.ToFile');
+    import('matlab.unittest.plugins.ToFile');
     import('matlab.unittest.plugins.CodeCoveragePlugin');
     import('matlab.unittest.plugins.codecoverage.CoberturaFormat');
 
@@ -33,7 +34,7 @@ try
     if produceTAP
         mkdirIfNeeded(resultsDir)
         resultsFile = fullfile(resultsDir, 'testResults.tap');
-        runner.addPlugin(TAPPlugin.producingVersion13(resultsFile));
+        runner.addPlugin(TAPPlugin.producingVersion13(ToFile(resultsFile)));
     end
 
     if produceCobertura
