@@ -24,21 +24,21 @@ try
     runner = TestRunner.withTextOutput('Verbosity',3);
 
     % Add the requested plugins
-    resultsDir = fullfile(ws, 'testresults');
+    resultsDir = fullfile(ws, 'results');
     if produceJUnit
         mkdirIfNeeded(resultsDir)
-        resultsFile = fullfile(resultsDir, 'testResults.xml')
+        resultsFile = fullfile(resultsDir, 'testResults.xml');
         runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile));
     end
     
     if produceTAP
         mkdirIfNeeded(resultsDir)
-        resultsFile = fullfile(resultsDir, 'testResults.tap')
+        resultsFile = fullfile(resultsDir, 'testResults.tap');
         runner.addPlugin(TAPPlugin.producingVersion13(ToFile(resultsFile)));
     end
 
     if produceCobertura
-        coverageFile = fullfile(resultsDir, 'cobertura.xml')
+        coverageFile = fullfile(resultsDir, 'cobertura.xml');
         runner.addPlugin(CodeCoveragePlugin.forFolder(fullfile(ws,'source'),...
             'Producing', CoberturaFormat(coverageFile)));
     end
