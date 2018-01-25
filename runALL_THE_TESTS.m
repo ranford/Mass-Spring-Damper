@@ -1,39 +1,52 @@
+function runMATLABCI(produceJUnit, produceTAP, produceCobertura)
 try
     import('matlab.unittest.TestRunner');
     import('matlab.unittest.plugins.XMLPlugin');
     import('matlab.unittest.plugins.ToFile');
+    import('matlab.unittest.plugins.CodeCoveragePlugin');
+    import('matlab.unittest.plugins.codecoverage.CoberturaFormat');
 
+    mkdir('release')
     d = dir('*.prj');
-    matlab.addons.toolbox.packageToolbox(d.name);
-
-    tbx = matlab.addons.toolbox.installToolbox(d.name,true);
+    outputToolbox = fullfile('release', [d.name '.mltbx']);
+    matlab.addons.toolbox.packageToolbox(d.name, outputToolbox);
+    tbx = matlab.addons.toolbox.installToolbox(outputToolbox,true);
     cl =onCleanup(@() matlab.addons.toolbox.installToolbox(tbx));
     
     ws = getenv('WORKSPACE');
-    
-    src = fullfile(ws, 'source');
-    %addpath(src);
-
     suite = testsuite;
 
     % Create and configure the runner
     runner = TestRunner.withTextOutput('Verbosity',3);
 
-    % Add the TAP plugin
-    resultsDir = fullfile(ws, 'testresults');
-    mkdir(resultsDir);
+    % Add the requested plugins
+    resultsDir = fullfile(ws, 'results');
+    if produceJUnit
+        mkdirIfNeeded(resultsDir)
+        resultsFile = fullfile(resultsDir, 'testResults.xml');
+        runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile));
+    end
     
-    resultsFile = fullfile(resultsDir, 'testResults.xml');
-    runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile));
-   
-    coverageFile = fullfile(resultsDir, 'cobertura.xml');
-    
-    addCoberturaCoverageIfPossible(runner, src, coverageFile);
+    if produceTAP
+        mkdirIfNeeded(resultsDir)
+        resultsFile = fullfile(resultsDir, 'testResults.tap');
+        runner.addPlugin(TAPPlugin.producingVersion13(resultsFile));
+    end
+
+    if produceCobertura
+        coverageFile = fullfile(resultsDir, 'cobertura.xml');
+        runner.addPlugin(CodeCoveragePlugin.forFolder(fullfile(ws,'source'),...
+            'Producing', CoberturaFormat(coverageFile)));
+    end
     
     results = runner.run(suite) 
 catch e
     disp(getReport(e,'extended'));
     exit(1);
 end
-quit('force');
+exit(nnz([results.Failed]));
 
+function mkdirIfNeeded(dir)
+if exist(dir,7) ~= 7
+    mkdir(dir);
+end
