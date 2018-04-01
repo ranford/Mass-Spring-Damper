@@ -30,6 +30,10 @@ classdef designTest < matlab.unittest.TestCase
             testCase.verifyError(@() simulateSystem('bunk'), ...
                'simulateSystem:InvalidDesign:ShouldBeStruct');
         end
+        
+        function testNewFeature(testCase)
+            testCase.verifyEqual(1, 2);
+        end
     end
     
 end
