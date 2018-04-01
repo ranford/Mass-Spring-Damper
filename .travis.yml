@@ -1,3 +1,5 @@
-language: matlab
-  matlab:
-    - "R2018a"
+  language: python
+  python:
+    - "3.6"
+  script:
+    - pytest
