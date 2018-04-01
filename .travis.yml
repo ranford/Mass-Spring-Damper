@@ -1,5 +1,1 @@
-  language: matlab
-  matlab:
-    - "3.6"
-  script:
-    - pytest
+language: matlab
