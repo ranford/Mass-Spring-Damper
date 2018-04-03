@@ -28,3 +28,7 @@ function testInvalidInput(testCase)
 testCase.verifyError(@() simulateSystem('bunk'), ...
    'simulateSystem:InvalidDesign:ShouldBeStruct');
 end
+
+function testFailure(testCase)
+testCase.verifyEqual(5,6);
+end
