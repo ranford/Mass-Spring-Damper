@@ -1,1 +1,9 @@
-{"Version":1,"FolderInfo":[{"Name":"tests","IsTestFolder":true}]}
+{
+  "Version": "1.0.0",
+  "FolderData": [
+    {
+      "Name": "tests",
+      "IsTestFolder": true
+    }
+  ]
+}
