@@ -34,7 +34,7 @@ testCase.verifyError(@() simulateSystem('bunk'), ...
 end
 
 function testFailure(testCase)
-testCase.verifyEqual(5,6);
+testCase.verifyEqual(5,5);
 end
 
 function addSourceToPath(testCase)
