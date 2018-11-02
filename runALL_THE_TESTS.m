@@ -14,8 +14,8 @@ try
     resultsDir = fullfile(ws, 'testresults');
     mkdir(resultsDir);
     
-    resultsFile = fullfile(resultsDir, 'testResults.xml');
-    runner.addPlugin(XMLPlugin.producingJUnitFormat(resultsFile));
+    resultsFile = fullfile(resultsDir, 'testResults.tap');
+    runner.addPlugin(TAPPlugin.producingVersion13(ToFile(resultsFile)));
    
     mkdir('reports')
     runner.addPlugin(TestReportPlugin.producingHTML('reports'));
