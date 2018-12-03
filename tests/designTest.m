@@ -2,7 +2,7 @@ function tests = designTest
 tests = functiontests(localfunctions); 
 end
 
-function setupOnce(testCase
+function setupOnce(testCase)
 testCase.applyFixture(matlab.unittest.fixtures.PathFixture(fullfile('..','source')));
 
 function testSettlingTime(testCase) 
