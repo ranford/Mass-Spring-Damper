@@ -2,10 +2,11 @@ function tests = designTest
 tests = functiontests(localfunctions); 
 end
 
+function setupOnce(testCase
+testCase.applyFixture(matlab.unittest.fixtures.PathFixture(fullfile('..','source')));
+
 function testSettlingTime(testCase) 
 %%Test that the system settles to within 0.001 of zero under 2 seconds.
-
-addSourceToPath(testCase);
 
 [position, time] = simulateSystem(springMassDamperDesign); 
 
@@ -18,7 +19,6 @@ end
 function testOvershoot(testCase)
  %Test to ensure that overshoot is less than 0.01
 
-addSourceToPath(testCase);
 [position, ~] = simulateSystem(springMassDamperDesign);
 overshoot = max(position);
 
@@ -28,15 +28,10 @@ end
 function testInvalidInput(testCase)
 % Test to ensure we fail gracefully with bogus input
 
-addSourceToPath(testCase);
 testCase.verifyError(@() simulateSystem('bunk'), ...
    'simulateSystem:InvalidDesign:ShouldBeStruct');
 end
 
 function testFailure(testCase)
-testCase.verifyEqual(5,5);
-end
-
-function addSourceToPath(testCase)
-testCase.applyFixture(matlab.unittest.fixtures.PathFixture(fullfile('..','source')));
+testCase.verifyEqual(5,6);
 end
