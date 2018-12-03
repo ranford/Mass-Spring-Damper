@@ -4,6 +4,7 @@ end
 
 function setupOnce(testCase)
 testCase.applyFixture(matlab.unittest.fixtures.PathFixture(fullfile('..','source')));
+end
 
 function testSettlingTime(testCase) 
 %%Test that the system settles to within 0.001 of zero under 2 seconds.
