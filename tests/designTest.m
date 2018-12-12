@@ -37,6 +37,6 @@ function testFailure(testCase)
 testCase.verifyEqual(5,5);
 end
 function testFailure2(testCase)
-testCase.verifyEqual(5,5);
+testCase.verifyEqual(5,6);
 end
 
